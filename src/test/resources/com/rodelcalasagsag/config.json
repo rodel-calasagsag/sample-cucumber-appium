@@ -1,0 +1,27 @@
+{
+  "appiumServer": {
+    "host": "127.0.0.1",
+    "port": "4723"
+  },
+  "capabilities": {
+    "build": "dummy-build",
+    "name": "dummy-name",
+    "platformName": {
+      "android": {
+        "deviceName": "28fd0a61353f7ece",
+        "automationName": "UiAutomator2",
+        "unicodeKeyboard": "true",
+        "resetKeyboard": "true",
+        "app": "/app/android/WikipediaSample.apk",
+        "appPackage": "org.wikipedia.alpha",
+        "appWaitActivity": "org.wikipedia.main.MainActivity",
+        "appWaitDuration": "5000"
+      },
+      "ios": {
+        "deviceName": "iPhone 6 Plus",
+        "version": "12",
+        "app": "/app/ios/BStackSampleApp.ipa"
+      }
+    }
+  }
+}
