@@ -10,7 +10,7 @@ import java.io.IOException;
 class Config {
 
   private static final JSONObject config = getConfigJSON();
-  private static final JSONObject appiumServer = (JSONObject) config.get("appiumServer");
+  private static final JSONObject appiumServer = (JSONObject) (config.get("appiumServer"));
 
   private static JSONObject getConfigJSON() {
     JSONParser parser = new JSONParser();
@@ -20,8 +20,7 @@ class Config {
     try {
       return (JSONObject) parser.parse(new FileReader(configPath));
     } catch (IOException | ParseException e) {
-      e.printStackTrace();
-      return null;
+      throw new Error(e);
     }
   }
 
@@ -35,5 +34,9 @@ class Config {
 
   static JSONObject capabilities() {
     return (JSONObject) config.get("capabilities");
+  }
+
+  static String platform() {
+    return (String) config.get("platform");
   }
 }

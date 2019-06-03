@@ -8,21 +8,21 @@ Feature: Login
     When I login with username "<username>" and password "<password>"
     Then I should see the message
       """
-      Incorrect username or password entered
-      Please try again
+      Incorrect username or password entered.
+      Please try again.
       """
     And I should be in the login page
     Examples:
-      | username  | password  |
-      | wrong-usr | wrong-pwd |
-#      | correct-usr | wrong-pwd   |
-#      | wrong-usr   | correct-pwd |
+      | username    | password    |
+      | wrong_usr   | wrong_pwd   |
+      | correct_usr | wrong_pwd   |
+      | wrong_usr   | correct_pwd |
 
-#  Scenario Outline: : Login with missing credentials
-#    When I login with username "<username>" and password "<password>"
-#    Then I should see the login button as disabled
-#    And I should be in the login page
-#    Examples:
-#      | username    | password    |
-#      | correct-usr |             |
-#      |             | correct-pwd |
+  Scenario Outline: : Login with missing credentials
+    When I login with username "<username>" and password "<password>"
+    Then I should see the "Log in" button as "disabled"
+    And I should be in the login page
+    Examples:
+      | username    | password    |
+      | correct_usr |             |
+      |             | correct_pwd |

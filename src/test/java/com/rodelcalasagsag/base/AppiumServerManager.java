@@ -5,14 +5,17 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 import java.net.URL;
 
-class AppiumServerManager {
+public class AppiumServerManager {
 
   private static AppiumDriverLocalService appiumService;
 
-  static void setupServer() {
+  public static void setupServer() {
     if (appiumService == null || !appiumService.isRunning()) {
       AppiumServiceBuilder builder = new AppiumServiceBuilder();
-      builder.withIPAddress(Config.appiumHost()).usingPort(Config.appiumPort());
+      builder
+          .withIPAddress(Config.appiumHost())
+          .usingPort(Config.appiumPort())
+          .withArgument(() -> "--log-level", "warn");
       appiumService = AppiumDriverLocalService.buildService(builder);
       appiumService.start();
     }
@@ -22,7 +25,7 @@ class AppiumServerManager {
     return appiumService.getUrl();
   }
 
-  static void tearDownServer() {
+  public static void tearDownServer() {
     if (appiumService.isRunning()) {
       appiumService.stop();
     }

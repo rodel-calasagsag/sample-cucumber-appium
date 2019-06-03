@@ -1,23 +1,16 @@
 package com.rodelcalasagsag.base;
 
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import io.appium.java_client.AppiumDriver;
 
 public class BaseSteps {
 
-  protected RemoteWebDriver driver;
+  protected AppiumDriver driver;
 
-  protected void startApp(Platform platform) {
-    AppiumServerManager.setupServer();
-    driver = AppiumDriverManager.setupDriver(platform);
+  protected void setupDriver() {
+    driver = AppiumDriverManager.setupDriver();
   }
 
-  protected void stopApp() {
-    tearDownDriver();
-    AppiumServerManager.tearDownServer();
-  }
-
-  private void tearDownDriver() {
+  protected void tearDownDriver() {
     if (driver != null) {
       driver.quit();
     }
