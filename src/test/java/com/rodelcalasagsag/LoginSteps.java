@@ -1,8 +1,9 @@
 package com.rodelcalasagsag;
 
 import com.rodelcalasagsag.base.BaseSteps;
-import com.rodelcalasagsag.pages.login.LoginPage;
-import com.rodelcalasagsag.pages.nav.Menu;
+import com.rodelcalasagsag.pages.ExplorePage;
+import com.rodelcalasagsag.pages.LoginPage;
+import com.rodelcalasagsag.pages.Menu;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -18,10 +19,12 @@ import static org.hamcrest.Matchers.is;
 public class LoginSteps extends BaseSteps {
 
   private LoginPage loginPage;
+  private Menu menu;
+  private ExplorePage explorePage;
 
   @Before
   public void setupScenario() {
-    setupDriver(); // todo: make this data-driven
+    setupDriver();
   }
 
   @After
@@ -31,17 +34,18 @@ public class LoginSteps extends BaseSteps {
 
   @Given("I am in the login page")
   public void iAmInTheLoginPage() {
-    loginPage = Menu.get(driver).goToLoginPage();
+    menu = Menu.get(driver);
+    loginPage = menu.goToLoginPage();
   }
 
   @When("I login with username {string} and password {string}")
   public void iLoginWithUsernameAndPassword(String username, String password) {
-    loginPage.login(username, password);
+    explorePage = loginPage.login(username, password);
   }
 
-  @Then("I should see the message")
-  public void iShouldSeeTheMessage(String msg) {
-    assertThat(loginPage.showsMessage(msg), is(true));
+  @Then("I should see the text")
+  public void iShouldSeeTheTextBlock(String text) {
+    assertThat(loginPage.showsText(text), is(true));
   }
 
   @And("I should be in the login page")
@@ -53,5 +57,20 @@ public class LoginSteps extends BaseSteps {
   public void iShouldSeeTheButtonAs(String buttonText, String state) {
     boolean enabled = state.equalsIgnoreCase("enabled");
     assertThat(loginPage.showsButtonAsEnabled(buttonText), is(enabled));
+  }
+
+  @Then("I should see the text {string}")
+  public void iShouldSeeTheTextLine(String text) {
+    assertThat(loginPage.showsText(text), is(true));
+  }
+
+  @When("I open the menu")
+  public void iOpenTheMenu() {
+    menu.open();
+  }
+
+  @Then("I should be in the explore page")
+  public void iShouldBeInTheExplorePage() {
+    assertThat(explorePage.isDisplayed(), is(true));
   }
 }

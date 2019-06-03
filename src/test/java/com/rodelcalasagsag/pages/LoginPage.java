@@ -1,6 +1,5 @@
-package com.rodelcalasagsag.pages.login;
+package com.rodelcalasagsag.pages;
 
-import com.rodelcalasagsag.pages.PageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -24,12 +23,13 @@ public class LoginPage extends PageObject {
     waitElement(loginBtn);
   }
 
-  public void login(String username, String password) {
-    typeUsername(username).typePassword(password).submit();
+  public ExplorePage login(String username, String password) {
+    return typeUsername(username).typePassword(password).submit();
   }
 
-  private void submit() {
+  private ExplorePage submit() {
     loginBtn.click();
+    return new ExplorePage(driver);
   }
 
   private LoginPage typePassword(String password) {

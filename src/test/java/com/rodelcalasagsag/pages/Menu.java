@@ -1,7 +1,5 @@
-package com.rodelcalasagsag.pages.nav;
+package com.rodelcalasagsag.pages;
 
-import com.rodelcalasagsag.pages.PageObject;
-import com.rodelcalasagsag.pages.login.LoginPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -27,8 +25,13 @@ public class Menu extends PageObject {
   }
 
   public LoginPage goToLoginPage() {
-    menuBtn.click();
+    open();
     loginItem.click();
     return new LoginPage(driver);
+  }
+
+  public Menu open() {
+    menuBtn.click();
+    return this;
   }
 }

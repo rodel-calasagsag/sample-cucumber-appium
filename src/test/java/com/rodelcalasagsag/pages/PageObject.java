@@ -28,7 +28,7 @@ public class PageObject {
     e.sendKeys(s);
   }
 
-  public boolean showsMessage(String msg) {
+  public boolean showsText(String msg) {
     return waitElementWithText(msg).isDisplayed();
   }
 

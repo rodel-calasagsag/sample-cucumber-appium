@@ -46,9 +46,10 @@ class AppiumDriverManager {
     capsJSON.forEach(
         (k, v) -> {
           if (k.equals(PLATFORM_NAME)) {
-            caps.setCapability(k.toString(), Config.platform());
+            String platformName = Config.platform();
+            caps.setCapability(k.toString(), platformName);
             JSONObject platformNameJSON = (JSONObject) v;
-            JSONObject osJSON = (JSONObject) platformNameJSON.get(Config.platform().toLowerCase());
+            JSONObject osJSON = (JSONObject) platformNameJSON.get(platformName.toLowerCase());
             osJSON.forEach(
                 (osKey, osVal) -> {
                   String strOsVal = osVal.toString();
