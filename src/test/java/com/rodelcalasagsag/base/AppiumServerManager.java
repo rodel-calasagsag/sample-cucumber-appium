@@ -15,7 +15,7 @@ public class AppiumServerManager {
       builder
           .withIPAddress(Config.APPIUM_HOST)
           .usingPort(Config.APPIUM_PORT)
-          .withArgument(() -> "--log-level", "warn");
+          .withArgument(() -> "--log-level", Config.APPIUM_LOG_LEVEL);
       appiumService = AppiumDriverLocalService.buildService(builder);
       appiumService.start();
     }
