@@ -1,4 +1,4 @@
-package com.rodelcalasagsag;
+package com.rodelcalasagsag.steps;
 
 import cucumber.api.java.en.Then;
 

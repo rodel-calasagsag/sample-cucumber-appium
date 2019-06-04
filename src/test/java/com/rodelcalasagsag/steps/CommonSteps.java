@@ -1,4 +1,4 @@
-package com.rodelcalasagsag;
+package com.rodelcalasagsag.steps;
 
 import com.rodelcalasagsag.custom_param_types.ElementState;
 import com.rodelcalasagsag.pages.BasePage;
@@ -13,22 +13,21 @@ public class CommonSteps {
 
   public CommonSteps(World world) {
     this.world = world;
+    world.basePage = new BasePage(world.driver);
   }
 
   @Then("I should see the text")
   public void iShouldSeeTheTextBlock(String text) {
-    assertThat(BasePage.getCurrentPage(world.driver).showsText(text), is(true));
+    assertThat(world.basePage.showsText(text), is(true));
   }
 
   @Then("I should see the {string} button as {state}")
   public void iShouldSeeTheButtonAs(String buttonText, ElementState state) {
-    assertThat(
-        BasePage.getCurrentPage(world.driver).showsButtonAsEnabled(buttonText),
-        is(state.isEnabled()));
+    assertThat(world.basePage.showsButtonAsEnabled(buttonText), is(state.isEnabled()));
   }
 
   @Then("I should see the text {string}")
   public void iShouldSeeTheTextLine(String text) {
-    assertThat(BasePage.getCurrentPage(world.driver).showsText(text), is(true));
+    assertThat(world.basePage.showsText(text), is(true));
   }
 }

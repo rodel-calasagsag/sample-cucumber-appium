@@ -1,4 +1,4 @@
-package com.rodelcalasagsag;
+package com.rodelcalasagsag.steps;
 
 import com.rodelcalasagsag.pages.nav.Menu;
 import cucumber.api.java.en.When;

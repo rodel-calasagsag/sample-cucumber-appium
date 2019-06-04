@@ -1,4 +1,4 @@
-package com.rodelcalasagsag;
+package com.rodelcalasagsag.steps;
 
 import com.rodelcalasagsag.base.AppiumDriverManager;
 import cucumber.api.Scenario;

@@ -18,6 +18,7 @@ Feature: Login
       | wrong_usr   | wrong_pwd |
       | correct_usr | wrong_pwd |
 
+  @trivial
   Scenario Outline: : Login with missing credentials
     When I login with username "<username>" and password "<password>"
     Then I should see the "Log in" button as disabled
