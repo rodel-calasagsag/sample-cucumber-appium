@@ -1,12 +1,14 @@
-package com.rodelcalasagsag.pages;
+package com.rodelcalasagsag.pages.nav;
 
+import com.rodelcalasagsag.pages.BasePage;
+import com.rodelcalasagsag.pages.login.LoginPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Menu extends PageObject {
+public class Menu extends BasePage {
 
   @FindBy(id = "org.wikipedia.alpha:id/menu_overflow_button")
   private MobileElement menuBtn;
@@ -17,7 +19,6 @@ public class Menu extends PageObject {
   private Menu(AppiumDriver driver) {
     super(driver);
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    waitElement(menuBtn);
   }
 
   public static Menu get(AppiumDriver driver) {

@@ -9,14 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
-public class PageObject {
+public class BasePage {
 
   protected AppiumDriver driver;
   private WebDriverWait wait;
 
-  public PageObject(AppiumDriver driver) {
+  public BasePage(AppiumDriver driver) {
     this.driver = driver;
     wait = new WebDriverWait(driver, 10);
+  }
+
+  public static BasePage getCurrentPage(AppiumDriver driver) {
+    return new BasePage(driver);
   }
 
   protected MobileElement waitElement(WebElement e) {
@@ -29,20 +33,20 @@ public class PageObject {
   }
 
   public boolean showsText(String msg) {
-    return waitElementWithText(msg).isDisplayed();
+    return findElementWithText(msg).isDisplayed();
   }
 
-  protected MobileElement waitElementWithText(String s) {
-    By byXPath = By.xpath("//*[@text=\"" + s.trim() + "\"]");
-    return waitElementWithLocator(byXPath);
+  protected MobileElement findElementWithText(String s) {
+    By xpath = By.xpath("//*[@text=\"" + s.trim() + "\"]");
+    return findElementBy(xpath);
   }
 
   public boolean showsButtonAsEnabled(String buttonText) {
-    By byXPath = By.xpath(String.format("//*[@text='%s' and @clickable='true']", buttonText));
-    return waitElementWithLocator(byXPath).isEnabled();
+    By xpath = By.xpath(String.format("//*[@text='%s' and @clickable='true']", buttonText));
+    return findElementBy(xpath).isEnabled();
   }
 
-  private MobileElement waitElementWithLocator(By by) {
+  private MobileElement findElementBy(By by) {
     return (MobileElement) wait.until(visibilityOfElementLocated(by));
   }
 }

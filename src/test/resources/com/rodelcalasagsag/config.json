@@ -10,7 +10,7 @@
     "platformName": {
       "android": {
         "deviceName": "My Galaxy Note9",
-        "udid": "28fd0a61353f7ece",
+        "udid": "emulator-5554",
         "automationName": "UiAutomator2",
         "unicodeKeyboard": "true",
         "resetKeyboard": "true",

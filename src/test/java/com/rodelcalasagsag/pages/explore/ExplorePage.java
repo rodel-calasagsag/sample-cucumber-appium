@@ -1,12 +1,13 @@
-package com.rodelcalasagsag.pages;
+package com.rodelcalasagsag.pages.explore;
 
+import com.rodelcalasagsag.pages.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ExplorePage extends PageObject {
+public class ExplorePage extends BasePage {
   @FindBy(
       xpath =
           "//*[@resource-id='org.wikipedia.alpha:id/search_container']//android.widget.TextView")
@@ -15,7 +16,6 @@ public class ExplorePage extends PageObject {
   public ExplorePage(AppiumDriver driver) {
     super(driver);
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    waitElement(searchBtn);
   }
 
   public boolean isDisplayed() {

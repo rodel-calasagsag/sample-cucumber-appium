@@ -4,21 +4,24 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 
 import java.net.URL;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 
-class AppiumDriverManager {
+public class AppiumDriverManager {
 
-  static AppiumDriver setupDriver() {
+  public static AppiumDriver createDriver() {
     URL url = AppiumServerManager.getServerURL();
-    DesiredCapabilities capabilities = setupCapabilities();
+    DesiredCapabilities capabilities = setCapabilities();
     AppiumDriver driver;
+    Platform platform = capabilities.getPlatform();
 
-    switch (capabilities.getPlatform()) {
+    switch (platform) {
       case ANDROID:
         driver = new AndroidDriver<>(url, capabilities);
         break;
@@ -26,27 +29,21 @@ class AppiumDriverManager {
         driver = new IOSDriver<>(url, capabilities);
         break;
       default:
-        throw new Error(
-            "Platform was neither ANDROID nor IOS: " + capabilities.getPlatform().toString());
+        throw new Error("Platform was neither ANDROID nor IOS: " + platform.toString());
     }
 
     driver.setFileDetector(new LocalFileDetector());
+    driver.manage().timeouts().implicitlyWait(10, SECONDS);
     return driver;
   }
 
-  private static DesiredCapabilities setupCapabilities() {
+  private static DesiredCapabilities setCapabilities() {
     DesiredCapabilities caps = new DesiredCapabilities();
-    setCapabilitiesFromConfig(caps);
-
-    return caps;
-  }
-
-  private static void setCapabilitiesFromConfig(DesiredCapabilities caps) {
-    JSONObject capsJSON = Config.capabilities();
+    JSONObject capsJSON = Config.CAPABILITIES;
     capsJSON.forEach(
         (k, v) -> {
           if (k.equals(PLATFORM_NAME)) {
-            String platformName = Config.platform();
+            String platformName = Config.PLATFORM;
             caps.setCapability(k.toString(), platformName);
             JSONObject platformNameJSON = (JSONObject) v;
             JSONObject osJSON = (JSONObject) platformNameJSON.get(platformName.toLowerCase());
@@ -62,5 +59,13 @@ class AppiumDriverManager {
             caps.setCapability(k.toString(), v.toString());
           }
         });
+
+    return caps;
+  }
+
+  public static void quitDriver(AppiumDriver driver) {
+    if (driver != null) {
+      driver.quit();
+    }
   }
 }

@@ -13,8 +13,8 @@ public class AppiumServerManager {
     if (appiumService == null || !appiumService.isRunning()) {
       AppiumServiceBuilder builder = new AppiumServiceBuilder();
       builder
-          .withIPAddress(Config.appiumHost())
-          .usingPort(Config.appiumPort())
+          .withIPAddress(Config.APPIUM_HOST)
+          .usingPort(Config.APPIUM_PORT)
           .withArgument(() -> "--log-level", "warn");
       appiumService = AppiumDriverLocalService.buildService(builder);
       appiumService.start();

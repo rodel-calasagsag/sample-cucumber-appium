@@ -10,7 +10,11 @@ import java.io.IOException;
 class Config {
 
   private static final JSONObject config = getConfigJSON();
-  private static final JSONObject appiumServer = (JSONObject) (config.get("appiumServer"));
+  public static final String PLATFORM = (String) config.get("platform");
+  public static final JSONObject CAPABILITIES = (JSONObject) config.get("capabilities");
+  private static final JSONObject APPIUM_SERVER = (JSONObject) (config.get("appiumServer"));
+  public static final String APPIUM_HOST = (String) APPIUM_SERVER.get("host");
+  public static final int APPIUM_PORT = Integer.parseInt(APPIUM_SERVER.get("port").toString());
 
   private static JSONObject getConfigJSON() {
     JSONParser parser = new JSONParser();
@@ -22,21 +26,5 @@ class Config {
     } catch (IOException | ParseException e) {
       throw new Error(e);
     }
-  }
-
-  static String appiumHost() {
-    return (String) appiumServer.get("host");
-  }
-
-  static int appiumPort() {
-    return Integer.parseInt(appiumServer.get("port").toString());
-  }
-
-  static JSONObject capabilities() {
-    return (JSONObject) config.get("capabilities");
-  }
-
-  static String platform() {
-    return (String) config.get("platform");
   }
 }
