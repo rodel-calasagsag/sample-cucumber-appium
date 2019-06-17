@@ -8,9 +8,8 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
-    plugin = {"pretty"},
-    tags = "@smoke or @wip")
+@CucumberOptions(plugin = {"pretty"} /*,
+    tags = "@smoke"*/)
 public class RunCucumberTest {
   @BeforeClass
   public static void startAppiumServer() {

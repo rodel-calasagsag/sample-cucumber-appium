@@ -10,7 +10,7 @@
     "name": "dummy-name",
     "platformName": {
       "android": {
-        "deviceName": "My Galaxy Note9 [28fd0a61353f7ece]",
+        "deviceName": "Pixel_2_API_28",
         "udid": "emulator-5554",
         "automationName": "UiAutomator2",
         "unicodeKeyboard": "true",

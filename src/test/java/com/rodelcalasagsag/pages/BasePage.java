@@ -3,8 +3,9 @@ package com.rodelcalasagsag.pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
@@ -19,11 +20,7 @@ public class BasePage {
     wait = new WebDriverWait(driver, 10);
   }
 
-  public static BasePage getCurrentPage(AppiumDriver driver) {
-    return new BasePage(driver);
-  }
-
-  protected MobileElement waitElement(WebElement e) {
+  protected MobileElement waitElement(MobileElement e) {
     return (MobileElement) wait.until(visibilityOf(e));
   }
 
@@ -32,11 +29,11 @@ public class BasePage {
     e.sendKeys(s);
   }
 
-  public boolean showsText(String msg) {
+  public boolean showsMessage(String msg) {
     return findElementWithText(msg).isDisplayed();
   }
 
-  protected MobileElement findElementWithText(String s) {
+  private MobileElement findElementWithText(String s) {
     By xpath = By.xpath("//*[@text=\"" + s.trim() + "\"]");
     return findElementBy(xpath);
   }
@@ -48,5 +45,13 @@ public class BasePage {
 
   private MobileElement findElementBy(By by) {
     return (MobileElement) wait.until(visibilityOfElementLocated(by));
+  }
+
+  protected void pause(int seconds) {
+    try {
+      TimeUnit.SECONDS.sleep(seconds);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 }

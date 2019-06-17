@@ -1,6 +1,6 @@
 package com.rodelcalasagsag.steps;
 
-import com.rodelcalasagsag.pages.nav.Menu;
+import com.rodelcalasagsag.pages.nav.Options;
 import cucumber.api.java.en.When;
 
 public class MenuSteps {
@@ -11,11 +11,11 @@ public class MenuSteps {
     this.world = world;
   }
 
-  @When("I open the menu")
-  public void iOpenTheMenu() {
-    if (world.menu == null) {
-      world.menu = Menu.get(world.driver);
+  @When("I open options")
+  public void iOpenOptions() {
+    if (world.options == null) {
+      world.options = Options.get(world.driver);
     }
-    world.menu.open();
+    world.options.open();
   }
 }

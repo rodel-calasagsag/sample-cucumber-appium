@@ -18,7 +18,7 @@ public class CommonSteps {
 
   @Then("I should see the text")
   public void iShouldSeeTheTextBlock(String text) {
-    assertThat(world.basePage.showsText(text), is(true));
+    assertThat(world.basePage.showsMessage(text), is(true));
   }
 
   @Then("I should see the {string} button as {state}")
@@ -28,6 +28,6 @@ public class CommonSteps {
 
   @Then("I should see the text {string}")
   public void iShouldSeeTheTextLine(String text) {
-    assertThat(world.basePage.showsText(text), is(true));
+    assertThat(world.basePage.showsMessage(text), is(true));
   }
 }

@@ -8,7 +8,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Menu extends BasePage {
+public class Options extends BasePage {
 
   @FindBy(id = "org.wikipedia.alpha:id/menu_overflow_button")
   private MobileElement menuBtn;
@@ -16,13 +16,13 @@ public class Menu extends BasePage {
   @FindBy(xpath = "//*[@text='Log in to Wikipedia']")
   private MobileElement loginItem;
 
-  private Menu(AppiumDriver driver) {
+  private Options(AppiumDriver driver) {
     super(driver);
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
   }
 
-  public static Menu get(AppiumDriver driver) {
-    return new Menu(driver);
+  public static Options get(AppiumDriver driver) {
+    return new Options(driver);
   }
 
   public LoginPage goToLoginPage() {
@@ -31,7 +31,7 @@ public class Menu extends BasePage {
     return new LoginPage(driver);
   }
 
-  public Menu open() {
+  public Options open() {
     menuBtn.click();
     return this;
   }

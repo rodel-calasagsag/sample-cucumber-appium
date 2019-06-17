@@ -1,6 +1,6 @@
 package com.rodelcalasagsag.steps;
 
-import com.rodelcalasagsag.pages.nav.Menu;
+import com.rodelcalasagsag.pages.nav.Options;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -18,7 +18,7 @@ public class AccountSteps {
 
   @Given("I am in the login page")
   public void iAmInTheLoginPage() {
-    world.loginPage = Menu.get(world.driver).goToLoginPage();
+    world.loginPage = Options.get(world.driver).goToLoginPage();
   }
 
   @When("I login with username {string} and password {string}")

@@ -18,7 +18,7 @@ Feature: Login
       | wrong_usr   | wrong_pwd |
       | correct_usr | wrong_pwd |
 
-  Scenario Outline: : Login with missing credentials
+  Scenario Outline: Login with missing credentials
     When I login with username "<username>" and password "<password>"
     Then I should see the "Log in" button as disabled
     And I should be in the login page
@@ -32,5 +32,5 @@ Feature: Login
     When I login with username "rcalasagsag" and password "B#1aBb$6"
     Then I should see the text "Logged in successfully!"
     And I should be in the explore page
-    When I open the menu
+    When I open options
     Then I should see the text "Rcalasagsag"
