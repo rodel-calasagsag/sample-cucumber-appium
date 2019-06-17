@@ -19,8 +19,7 @@ class Config {
 
   private static JSONObject getConfigJSON() {
     JSONParser parser = new JSONParser();
-    String configPath =
-        System.getProperty("user.dir") + "/src/test/resources/com/rodelcalasagsag/config.json";
+    String configPath = System.getProperty("user.dir") + "/src/test/resources/config.json";
 
     try {
       return (JSONObject) parser.parse(new FileReader(configPath));

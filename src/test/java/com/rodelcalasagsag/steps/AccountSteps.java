@@ -8,7 +8,6 @@ import cucumber.api.java.en.When;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-// todo: give ability to run in parallel
 public class AccountSteps {
 
   private World world;
