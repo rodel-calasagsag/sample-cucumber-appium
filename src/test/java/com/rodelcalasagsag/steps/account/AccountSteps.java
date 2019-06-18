@@ -1,6 +1,7 @@
-package com.rodelcalasagsag.steps;
+package com.rodelcalasagsag.steps.account;
 
-import com.rodelcalasagsag.pages.nav.Options;
+import com.rodelcalasagsag.pages.Options;
+import com.rodelcalasagsag.steps.World;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;

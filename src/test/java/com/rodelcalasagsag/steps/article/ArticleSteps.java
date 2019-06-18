@@ -1,5 +1,6 @@
-package com.rodelcalasagsag.steps;
+package com.rodelcalasagsag.steps.article;
 
+import com.rodelcalasagsag.steps.World;
 import cucumber.api.java.en.Then;
 
 import static org.hamcrest.MatcherAssert.assertThat;

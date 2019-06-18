@@ -1,13 +1,14 @@
-package com.rodelcalasagsag.steps;
+package com.rodelcalasagsag.steps.options;
 
-import com.rodelcalasagsag.pages.nav.Options;
+import com.rodelcalasagsag.pages.Options;
+import com.rodelcalasagsag.steps.World;
 import cucumber.api.java.en.When;
 
-public class MenuSteps {
+public class OptionsSteps {
 
   private World world;
 
-  public MenuSteps(World world) {
+  public OptionsSteps(World world) {
     this.world = world;
   }
 

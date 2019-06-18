@@ -1,6 +1,5 @@
-package com.rodelcalasagsag.pages.nav;
+package com.rodelcalasagsag.pages;
 
-import com.rodelcalasagsag.pages.BasePage;
 import com.rodelcalasagsag.pages.login.LoginPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
