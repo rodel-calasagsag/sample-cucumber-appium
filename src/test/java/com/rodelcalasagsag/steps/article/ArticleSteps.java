@@ -14,8 +14,8 @@ public class ArticleSteps {
     this.world = world;
   }
 
-  @Then("I should see an article with title {string} and subtitle {string}")
-  public void iShouldSeeAnArticleWithTitleAndSubtitle(String title, String subtitle) {
+  @Then("I should be in the article page with title {string} and subtitle {string}")
+  public void iShouldBeInTheArticlePageWithTitleAndSubtitle(String title, String subtitle) {
     assertThat(world.articlePage.getTitle(), equalTo(title));
     assertThat(world.articlePage.getSubTitle(), equalTo(subtitle));
   }

@@ -8,6 +8,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -15,7 +16,7 @@ import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 
 public class AppiumDriverManager {
 
-  public static AppiumDriver createDriver() {
+  public static AppiumDriver createDriver() throws MalformedURLException {
     URL url = AppiumServerManager.getServerURL();
     DesiredCapabilities capabilities = setCapabilities();
     AppiumDriver driver;
@@ -37,6 +38,7 @@ public class AppiumDriverManager {
     return driver;
   }
 
+  @SuppressWarnings("unchecked")
   private static DesiredCapabilities setCapabilities() {
     DesiredCapabilities caps = new DesiredCapabilities();
     JSONObject capsJSON = Config.CAPABILITIES;

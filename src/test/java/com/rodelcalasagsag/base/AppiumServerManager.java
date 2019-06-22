@@ -3,6 +3,7 @@ package com.rodelcalasagsag.base;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppiumServerManager {
@@ -21,8 +22,12 @@ public class AppiumServerManager {
     }
   }
 
-  static URL getServerURL() {
-    return appiumService.getUrl();
+  static URL getServerURL() throws MalformedURLException {
+    if (appiumService == null) {
+      return new URL("http://" + Config.APPIUM_HOST + ":" + Config.APPIUM_PORT + "/wd/hub");
+    } else {
+      return appiumService.getUrl();
+    }
   }
 
   public static void tearDownServer() {

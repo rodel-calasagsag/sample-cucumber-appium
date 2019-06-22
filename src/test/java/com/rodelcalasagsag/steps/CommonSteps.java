@@ -3,6 +3,7 @@ package com.rodelcalasagsag.steps;
 import com.rodelcalasagsag.custom_param_types.ElementState;
 import com.rodelcalasagsag.pages.BasePage;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -29,5 +30,10 @@ public class CommonSteps {
   @Then("I should see the text {string}")
   public void iShouldSeeTheTextLine(String text) {
     assertThat(world.basePage.showsMessage(text), is(true));
+  }
+
+  @When("I scroll down")
+  public void iScrollDown() {
+    // todo this
   }
 }
