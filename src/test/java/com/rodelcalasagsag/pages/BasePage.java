@@ -1,8 +1,10 @@
 package com.rodelcalasagsag.pages;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -12,12 +14,14 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class BasePage {
 
-  protected AppiumDriver driver;
+  private static final String PAGE_CONTAINER_ID = "org.wikipedia.alpha:id/fragment_main_view_pager";
+  protected AndroidDriver driver;
   private WebDriverWait wait;
 
-  public BasePage(AppiumDriver driver) {
+  public BasePage(AndroidDriver driver) {
     this.driver = driver;
     wait = new WebDriverWait(driver, 10);
+    PageFactory.initElements(new AppiumFieldDecorator(driver), this);
   }
 
   protected MobileElement waitElement(MobileElement e) {
@@ -53,5 +57,15 @@ public class BasePage {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+  }
+
+  public void scrollDown() {
+    String str =
+        "new UiScrollable(new UiSelector().resourceId(\""
+            + PAGE_CONTAINER_ID
+            + "\"))"
+            + ".scrollForward()"
+            + ".getChildByDescription(new UiSelector().index(0),\"\",false);";
+    driver.findElementByAndroidUIAutomator(str);
   }
 }

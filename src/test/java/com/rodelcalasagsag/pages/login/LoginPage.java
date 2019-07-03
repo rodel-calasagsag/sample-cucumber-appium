@@ -2,8 +2,8 @@ package com.rodelcalasagsag.pages.login;
 
 import com.rodelcalasagsag.pages.BasePage;
 import com.rodelcalasagsag.pages.explore.ExplorePage;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
   @FindBy(xpath = "//*[@password='true']")
   private MobileElement passwordField;
 
-  public LoginPage(AppiumDriver driver) {
+  public LoginPage(AndroidDriver driver) {
     super(driver);
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
   }

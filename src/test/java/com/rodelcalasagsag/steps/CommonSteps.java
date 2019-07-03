@@ -34,6 +34,6 @@ public class CommonSteps {
 
   @When("I scroll down")
   public void iScrollDown() {
-    // todo this
+    world.basePage.scrollDown();
   }
 }

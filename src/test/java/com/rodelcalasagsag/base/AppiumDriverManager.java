@@ -2,7 +2,7 @@ package com.rodelcalasagsag.base;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -16,23 +16,11 @@ import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 
 public class AppiumDriverManager {
 
-  public static AppiumDriver createDriver() throws MalformedURLException {
+  public static AndroidDriver createDriver() throws MalformedURLException {
     URL url = AppiumServerManager.getServerURL();
     DesiredCapabilities capabilities = setCapabilities();
-    AppiumDriver driver;
     Platform platform = capabilities.getPlatform();
-
-    switch (platform) {
-      case ANDROID:
-        driver = new AndroidDriver<>(url, capabilities);
-        break;
-      case IOS:
-        driver = new IOSDriver<>(url, capabilities);
-        break;
-      default:
-        throw new Error("Platform was neither ANDROID nor IOS: " + platform.toString());
-    }
-
+    AndroidDriver driver = new AndroidDriver<AndroidElement>(url, capabilities);
     driver.setFileDetector(new LocalFileDetector());
     driver.manage().timeouts().implicitlyWait(10, SECONDS);
     return driver;

@@ -29,6 +29,7 @@ public class ExploreSteps {
 
   @When("I search wikipedia for {string}")
   public void iSearchWikipediaFor(String query) {
+    // todo split this into 2 different steps
     world.searchWikiModal = world.explorePage.openSearch().searchWiki(query);
   }
 
@@ -46,5 +47,6 @@ public class ExploreSteps {
   @And("I tap on the search icon")
   public void iTapOnTheSearchIcon() {
     // todo
+    world.explorePage.tapSearchIcon();
   }
 }

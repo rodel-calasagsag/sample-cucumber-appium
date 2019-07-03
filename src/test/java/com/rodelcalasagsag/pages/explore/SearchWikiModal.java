@@ -2,8 +2,8 @@ package com.rodelcalasagsag.pages.explore;
 
 import com.rodelcalasagsag.pages.BasePage;
 import com.rodelcalasagsag.pages.article.ArticlePage;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -22,7 +22,7 @@ public class SearchWikiModal extends BasePage {
   @FindBy(xpath = ".//*[@resource-id='org.wikipedia.alpha:id/page_list_item_container']")
   private List<MobileElement> resultContainer;
 
-  SearchWikiModal(AppiumDriver driver) {
+  SearchWikiModal(AndroidDriver driver) {
     super(driver);
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
   }
