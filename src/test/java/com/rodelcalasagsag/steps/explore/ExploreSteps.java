@@ -27,9 +27,8 @@ public class ExploreSteps {
     world.explorePage = Nav.get(world.driver).clickExplore();
   }
 
-  @When("I search wikipedia for {string}")
-  public void iSearchWikipediaFor(String query) {
-    // todo split this into 2 different steps
+  @When("I search wikipedia for {string} using the search text box in header")
+  public void iSearchWikipediaForUsingTheSearchTextBoxInHeader(String query) {
     world.searchWikiModal = world.explorePage.openSearch().searchWiki(query);
   }
 
@@ -44,9 +43,8 @@ public class ExploreSteps {
         world.searchWikiModal.selectResultWithTitleAndDescription(title, description);
   }
 
-  @And("I tap on the search icon")
-  public void iTapOnTheSearchIcon() {
-    // todo
-    world.explorePage.tapSearchIcon();
+  @And("I search wikipedia for {string} using the search icon")
+  public void iSearchWikipediaForUsingTheSearchIcon(String query) {
+    world.searchWikiModal = world.explorePage.tapSearchIcon().searchWiki(query);
   }
 }
